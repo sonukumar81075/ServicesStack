@@ -31,5 +31,13 @@
     "source-map-js": "^1.2.1",
     "update-browserslist-db": "^1.2.3"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonukumar81075/ServicesStack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sonukumar81075/ServicesStack/issues"
+  },
+  "homepage": "https://github.com/sonukumar81075/ServicesStack#readme",
   "description": ""
 }
