@@ -71,10 +71,22 @@
     }
   };
 
+  function serviceDetailHref(text) {
+    if (typeof window.servicestackServiceDetailUrl === "function") {
+      return window.servicestackServiceDetailUrl(text);
+    }
+    const slug = String(text || "")
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+    return `service-details.html?service=${encodeURIComponent(slug)}`;
+  }
+
   function renderMegaLinks(container, items) {
     if (!container) return;
     container.innerHTML = items
-      .map((text) => `<a href="#" class="block hover:text-[#e71348]">${text}</a>`)
+      .map((text) => `<a href="${serviceDetailHref(text)}" class="block hover:text-[#e71348]">${text}</a>`)
       .join("");
   }
 
@@ -169,7 +181,23 @@
 
     desktopMegaMenu.addEventListener("mouseenter", openDesktopMega);
     desktopMegaMenu.addEventListener("mouseleave", scheduleMegaClose);
+
+    setMegaContent("semSolutions");
+    activeMegaKey = "semSolutions";
   }
+
+  function wireMobileServiceLinks() {
+    document.querySelectorAll("#mobileSearchPanel a, #mobilePackagesPanel a, #mobileToolsPanel a").forEach((a) => {
+      const t = a.textContent.trim();
+      if (t) a.setAttribute("href", serviceDetailHref(t));
+    });
+    document.querySelectorAll("#mobileMegaPanel .space-y-1 a").forEach((a) => {
+      const t = a.textContent.trim();
+      if (t) a.setAttribute("href", serviceDetailHref(t));
+    });
+  }
+
+  wireMobileServiceLinks();
 
   menuBtn?.addEventListener("click", () => {
     mobileMenu?.classList.toggle("hidden");
@@ -514,6 +542,44 @@ const observer = new IntersectionObserver((entries) => {
 
       container.addEventListener("mouseleave", () => {
         slideInterval = setInterval(nextSlide, duration);
+      });
+    })();
+
+    (() => {
+      const heroContactBtn = document.getElementById("heroContactBtn");
+      const heroContactModal = document.getElementById("heroContactModal");
+      const heroContactCloseBtn = document.getElementById("heroContactCloseBtn");
+      const heroContactBackdrop = document.getElementById("heroContactBackdrop");
+
+      if (!heroContactBtn || !heroContactModal) return;
+
+      const openModal = () => {
+        heroContactModal.classList.remove("hidden");
+        heroContactModal.classList.add("flex");
+        document.body.style.overflow = "hidden";
+        const firstField = heroContactModal.querySelector("input, textarea");
+        firstField?.focus();
+      };
+
+      const closeModal = () => {
+        heroContactModal.classList.add("hidden");
+        heroContactModal.classList.remove("flex");
+        document.body.style.overflow = "";
+      };
+
+      heroContactBtn.addEventListener("click", openModal);
+      heroContactCloseBtn?.addEventListener("click", closeModal);
+      heroContactBackdrop?.addEventListener("click", closeModal);
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !heroContactModal.classList.contains("hidden")) {
+          closeModal();
+        }
+      });
+
+      heroContactModal.querySelector("form")?.addEventListener("submit", (event) => {
+        event.preventDefault();
+        closeModal();
       });
     })();
 

@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Details | ServiceStack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./service-data.js"></script>
+    <script src="./main.js" defer></script>
+    <script src="./service-details.js" defer></script>
+    <link rel="stylesheet" href="./input.css">
+</head>
+
+<body class="bg-white text-slate-900">
+    <!-- ===== HEADER SECTION ===== -->
+    <header class="fixed top-0 left-0 z-50 w-full">
+        <!-- Top Info Bar -->
+        <div id="topInfoBar" class="top-info-bar hidden bg-slate-900 text-white/90 md:block">
+            <div class="mx-auto flex h-8 max-w-[1536px] items-center justify-between px-4 text-[11px]">
+                <div class="flex items-center gap-4 lg:gap-6">
+                    <a href="mailto:info@randerc3.com" class="inline-flex items-center gap-1.5 transition hover:text-yellow-300" aria-label="Send email to info@randerc3.com">
+                        <svg class="h-3 w-3 text-yellow-200" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M20.94 4.94A3 3 0 0 0 18.82 4H5.18a3 3 0 0 0-2.12.94A3 3 0 0 0 2 7.06v9.88a3 3 0 0 0 1.06 2.12A3 3 0 0 0 5.18 20h13.64a3 3 0 0 0 2.12-.94A3 3 0 0 0 22 16.94V7.06a3 3 0 0 0-1.06-2.12ZM5 6h14l-7 5-7-5Zm14 12H5a1 1 0 0 1-1-1V8.24l7.41 5.3a1 1 0 0 0 1.18 0L20 8.24V17a1 1 0 0 1-1 1Z" />
+            </svg> info@randerc3.com
+                    </a>
+                    <a href="tel:+32347666546" class="inline-flex items-center gap-1.5 transition hover:text-yellow-300" aria-label="Call +3234-7666546">
+                        <svg class="h-3 w-3 text-yellow-200" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M19.95 21a10.7 10.7 0 0 1-4.31-.96 2 2 0 0 1-1.14-1.86v-1.9a2 2 0 0 1 1.29-1.88l1.7-.63a1 1 0 0 1 1.06.24l1.33 1.47a14.5 14.5 0 0 0 2.9-2.9l-1.47-1.33a1 1 0 0 1-.24-1.06l.63-1.7A2 2 0 0 1 23 6.35V4.45a2 2 0 0 0-1.86-1.14A19.5 19.5 0 0 0 3.31 21.14 2 2 0 0 0 4.45 23h1.9a2 2 0 0 0 1.88-1.29l.63-1.7a1 1 0 0 0-.24-1.06l-1.47-1.33a14.5 14.5 0 0 1 2.9-2.9l1.33 1.47a1 1 0 0 0 1.06.24l1.7-.63a2 2 0 0 0 1.29-1.88v-1.9a2 2 0 0 0-1.14-1.86A10.7 10.7 0 0 1 19.95 3H21v2h-1.05a8.8 8.8 0 0 0-3.5.78v1.35l-1.95.72-.94-1.05a16.5 16.5 0 0 0-2.36 2.36l1.05.94-.72 1.95H10.2A8.8 8.8 0 0 0 9.42 21H11v2H9.42A10.7 10.7 0 0 1 19.95 21Z" />
+            </svg> +3234-7666546
+                    </a>
+                    <span class="inline-flex items-center gap-1.5">
+            <svg class="h-3 w-3 text-yellow-200" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2a10 10 0 1 0 10 10A10.01 10.01 0 0 0 12 2Zm1 11h4v-2h-3V6h-2v7a1 1 0 0 0 1 1Z" />
+            </svg>
+            Mon - Fri: 10:00 - 18:00
+          </span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                    <a href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="Visit X profile" class="grid h-6 w-6 place-items-center rounded bg-slate-800 text-[10px] font-bold text-white">x</a>
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Facebook profile" class="grid h-6 w-6 place-items-center rounded bg-slate-800 text-[10px] font-bold text-white">f</a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Instagram profile" class="grid h-6 w-6 place-items-center rounded bg-slate-800 text-[10px] font-bold text-white">g</a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ===== MAIN NAVBAR ===== -->
+        <div class="border-b border-white/10 bg-[#000000] backdrop-blur-sm">
+            <div class="header-main-row mx-auto flex h-[62px] max-w-[1536px] items-center px-3 sm:h-[66px] sm:px-3 lg:h-[72px] xl:px-4 2xl:px-6">
+                <a href="index.html" class="mr-2 shrink-0 xl:mr-3 2xl:mr-6">
+                    <span class="header-logo-text text-[28px] font-extrabold leading-none tracking-tight sm:text-[30px] 2xl:text-[35px]">
+            <span class="text-white">Service</span><span class="text-[#eab308]">stack</span>
+                    </span>
+                </a>
+
+                <nav class="hidden flex-1 items-center justify-center gap-1 xl:flex xl:gap-1.5 2xl:gap-4">
+                    <div class="group static py-6" data-dropdown data-mega-trigger data-mega-key="searchMarketing">
+                        <button class="nav-link flex items-center gap-1 whitespace-nowrap transition-colors hover:opacity-90">
+              Search Engine Marketing
+              <svg class="h-3 w-3 shrink-0 2xl:h-4 2xl:w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </button>
+                    </div>
+
+                    <div class="group static py-6" data-dropdown data-mega-trigger data-mega-key="semSolutions">
+                        <button class="nav-link flex items-center gap-1 whitespace-nowrap transition-colors hover:opacity-90">
+              SEM-Optimised Web Solutions
+              <svg class="h-3 w-3 shrink-0 2xl:h-4 2xl:w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </button>
+                    </div>
+
+                    <div class="group static py-6" data-dropdown data-mega-trigger data-mega-key="ourPackages">
+                        <button class="nav-link flex items-center gap-1 whitespace-nowrap transition-colors hover:opacity-90">
+              Our Packages
+              <svg class="h-3 w-3 shrink-0 2xl:h-4 2xl:w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </button>
+                    </div>
+
+                    <div class="group static py-6" data-dropdown data-mega-trigger data-mega-key="tools">
+                        <button class="nav-link flex items-center gap-1 whitespace-nowrap transition-colors hover:opacity-90">
+              Tools
+              <svg class="h-3 w-3 shrink-0 2xl:h-4 2xl:w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </button>
+                    </div>
+                </nav>
+
+                <div class="header-cta ml-auto hidden items-center gap-1.5 xl:flex 2xl:gap-2.5">
+                    <a href="#" class="cta-text whitespace-nowrap rounded-full border border-white/50 text-white transition hover:bg-white/15">Book a Meeting</a>
+                    <a href="#" class="cta-text whitespace-nowrap rounded-full bg-[#eab308] text-white transition hover:bg-[#ca8a04]">Get a Proposal</a>
+                </div>
+
+                <button id="menuBtn" class="ml-auto inline-flex rounded-lg border border-white/40 p-2 text-white xl:hidden" aria-label="Open menu">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 7h16M4 12h16M4 17h16"></path>
+          </svg>
+        </button>
+            </div>
+        </div>
+
+        <!-- ===== DESKTOP MEGA MENU ===== -->
+        <div id="desktopMegaMenu" class="pointer-events-none invisible absolute top-full left-1/2 z-40 w-[96%] max-w-[1320px] -translate-x-1/2 translate-y-4 opacity-0 transition-all duration-300 ease-out">
+            <div class="rounded-2xl border border-slate-200 bg-white px-5 py-6 xl:px-6 xl:py-7 shadow-[0_18px_45px_rgba(16,24,40,0.15)]">
+                <div id="desktopMegaContent" class="grid grid-cols-4 gap-4 xl:gap-6 transition-all duration-200 ease-out opacity-100 translate-y-0">
+                    <div class="border-r border-slate-200 pr-5">
+                        <div class="mb-4 flex items-center gap-3">
+                            <div class="grid h-10 w-10 place-items-center rounded-lg bg-cyan-50 text-cyan-600">
+                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 7h16M4 12h16M4 17h8"></path>
+                </svg>
+                            </div>
+                            <h3 id="megaCol1Title" class="text-[18px] font-bold leading-tight text-slate-800 xl:text-[20px]">Web Development Services</h3>
+                        </div>
+                        <div id="megaCol1Links" class="space-y-2 text-[15px] leading-[1.45] text-slate-600 xl:space-y-2.5 xl:text-[17px]">
+                            <a href="#" class="block hover:text-[#1e40af]">Web Development Services</a>
+                            <a href="#" class="block hover:text-[#1e40af]">Magento Web Development</a>
+                            <a href="#" class="block hover:text-[#1e40af]">Laravel Development Services</a>
+                            <a href="#" class="block hover:text-[#1e40af]">PHP Development Services</a>
+                            <a href="#" class="block hover:text-[#1e40af]">ASP Dot Net Development Services</a>
+                        </div>
+                    </div>
+
+                    <div class="border-r border-slate-200 pr-5">
+                        <div class="mb-4 flex items-center gap-3">
+                            <div class="grid h-10 w-10 place-items-center rounded-lg bg-cyan-50 text-cyan-600">
+                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                  <path d="M7 9h10M7 13h7"></path>
+                </svg>
+                            </div>
+                            <h3 id="megaCol2Title" class="text-[18px] font-bold leading-tight text-slate-800 xl:text-[20px]">Web Design Services</h3>
+                        </div>
+                        <div id="megaCol2Links" class="space-y-2 text-[15px] leading-[1.45] text-slate-600 xl:space-y-2.5 xl:text-[17px]">
+                            <a href="#" class="block hover:text-[#1e40af]">Web Design Services</a>
+                            <a href="#" class="block hover:text-[#1e40af]">WordPress Development</a>
+                            <a href="#" class="block hover:text-[#1e40af]">Logo Design</a>
+                            <a href="#" class="block hover:text-[#1e40af]">Mobile Responsive Website</a>
+                            <a href="#" class="block hover:text-[#1e40af]">Website Speed Optimization</a>
+                        </div>
+                    </div>
+
+                    <div class="border-r border-slate-200 pr-5">
+                        <div class="mb-4 flex items-center gap-3">
+                            <div class="grid h-10 w-10 place-items-center rounded-lg bg-cyan-50 text-cyan-600">
+                                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="9"></circle>
+                  <path d="M12 8v5M12 16h.01"></path>
+                </svg>
+                            </div>
+                            <h3 id="megaCol3Title" class="text-[18px] font-bold leading-tight text-slate-800 xl:text-[20px]">Learn About Us</h3>
+                        </div>
+                        <div id="megaCol3Links" class="space-y-2 text-[15px] leading-[1.45] text-slate-600 xl:space-y-2.5 xl:text-[17px]">
+                            <a href="#" class="block hover:text-[#1e40af]">SEO Case Studies</a>
+                            <a href="#" class="block hover:text-[#1e40af]">Client Testimonials</a>
+                            <a href="#" class="block hover:text-[#1e40af]">Read Our Super Blogs</a>
+                            <a href="#" class="block hover:text-[#1e40af]">Website Migration Guide</a>
+                            <a href="#" class="block hover:text-[#1e40af]">Website Migration Plugins</a>
+                        </div>
+                    </div>
+
+                    <div class="pl-1">
+                        <h3 id="megaCol4Title" class="mb-5 text-[18px] font-bold leading-tight text-slate-800 xl:text-[20px]">For More Information</h3>
+                        <a id="megaCol4Button" href="#" class="inline-flex items-center rounded-full border border-[#1e40af] px-5 py-1.5 text-[14px] font-semibold text-[#1e40af] transition hover:bg-[#e0f2fe] xl:px-6 xl:py-2 xl:text-[16px]">Contact
+              Us</a>
+                        <div class="mt-6 flex items-center gap-2">
+                            <div class="flex -space-x-2">
+                                <div class="h-9 w-9 rounded-full bg-slate-200 ring-2 ring-white"></div>
+                                <div class="h-9 w-9 rounded-full bg-slate-300 ring-2 ring-white"></div>
+                                <div class="h-9 w-9 rounded-full bg-slate-400 ring-2 ring-white"></div>
+                            </div>
+                            <span class="rounded-full bg-[#1e40af] px-2.5 py-0.5 text-xs font-semibold text-white">6k+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== MOBILE MENU ===== -->
+        <div id="mobileMenu" class="hidden border-t border-slate-200 bg-white xl:hidden">
+            <div class="space-y-2 px-4 py-4">
+                <button id="mobileSearchBtn" class="flex w-full items-center justify-between rounded-lg border border-slate-200 px-4 py-3 text-left font-medium">
+          Search Engine Marketing
+          <svg id="mobileSearchIcon" class="h-4 w-4 transition-transform" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <path d="m6 9 6 6 6-6"></path>
+          </svg>
+        </button>
+                <div id="mobileSearchPanel" class="hidden rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm">
+                    <a href="#" class="block rounded-md px-2 py-1.5 text-slate-700">SEO Packages</a>
+                    <a href="#" class="block rounded-md px-2 py-1.5 text-slate-700">Ecommerce SEO Packages</a>
+                    <a href="#" class="block rounded-md px-2 py-1.5 text-slate-700">Local SEO Packages</a>
+                    <a href="#" class="block rounded-md px-2 py-1.5 text-slate-700">Guest Posting Service Packages</a>
+                    <a href="#" class="block rounded-md px-2 py-1.5 text-slate-700">Link Building Packages</a>
+                </div>
+                <button id="mobileMegaBtn" class="flex w-full items-center justify-between rounded-lg border border-slate-200 px-4 py-3 text-left font-medium text-[#1e40af]">
+          SEM-Optimised Web Solutions
+          <svg id="mobileMegaIcon" class="h-4 w-4 transition-transform" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <path d="m6 9 6 6 6-6"></path>
+          </svg>
+        </button>
+
+                <div id="mobileMegaPanel" class="hidden rounded-xl border border-slate-200 bg-slate-50 p-4">
+                    <div class="space-y-4 text-sm">
+                        <div>
+                            <h3 class="mb-2 font-semibold text-slate-800">Web Development Services</h3>
+                            <div class="space-y-1 text-slate-600">
+                                <a href="#" class="block">Web Development Services</a>
+                                <a href="#" class="block">Magento Web Development</a>
+                                <a href="#" class="block">Laravel Development Services</a>
+                                <a href="#" class="block">PHP Development Services</a>
+                                <a href="#" class="block">ASP Dot Net Development Services</a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="mb-2 font-semibold text-slate-800">Web Design Services</h3>
+                            <div class="space-y-1 text-slate-600">
+                                <a href="#" class="block">Web Design Services</a>
+                                <a href="#" class="block">WordPress Development</a>
+                                <a href="#" class="block">Logo Design</a>
+                                <a href="#" class="block">Mobile Responsive Website</a>
+                                <a href="#" class="block">Website Speed Optimization</a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="mb-2 font-semibold text-slate-800">Learn About Us</h3>
+                            <div class="space-y-1 text-slate-600">
+                                <a href="#" class="block">SEO Case Studies</a>
+                                <a href="#" class="block">Client Testimonials</a>
+                                <a href="#" class="block">Read Our Super Blogs</a>
+                                <a href="#" class="block">Website Migration Guide</a>
+                                <a href="#" class="block">Website Migration Plugins</a>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="mb-2 font-semibold text-slate-800">For More Information</h3>
+                            <a href="#" class="inline-flex items-center rounded-full border border-[#1e40af] px-4 py-1.5 text-sm font-semibold text-[#1e40af]">Contact
+                Us</a>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="mobilePackagesBtn" class="flex w-full items-center justify-between rounded-lg border border-slate-200 px-4 py-3 text-left font-medium">
+          Our Packages
+          <svg id="mobilePackagesIcon" class="h-4 w-4 transition-transform" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <path d="m6 9 6 6 6-6"></path>
+          </svg>
+        </button>
+                <div id="mobilePackagesPanel" class="hidden rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm">
+                    <a href="#" class="block rounded-md px-2 py-1.5 text-slate-700">SEO Packages</a>
+                    <a href="#" class="block rounded-md px-2 py-1.5 text-slate-700">Web Development Packages</a>
+                    <a href="#" class="block rounded-md px-2 py-1.5 text-slate-700">Marketing Packages</a>
+                </div>
+
+                <button id="mobileToolsBtn" class="flex w-full items-center justify-between rounded-lg border border-slate-200 px-4 py-3 text-left font-medium">
+          Tools
+          <svg id="mobileToolsIcon" class="h-4 w-4 transition-transform" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2">
+            <path d="m6 9 6 6 6-6"></path>
+          </svg>
+        </button>
+                <div id="mobileToolsPanel" class="hidden rounded-xl border border-slate-200 bg-slate-50 p-3 text-sm">
+                    <a href="#" class="block rounded-md px-2 py-1.5 text-slate-700">SEO Audit Tool</a>
+                    <a href="#" class="block rounded-md px-2 py-1.5 text-slate-700">Keyword Finder</a>
+                    <a href="#" class="block rounded-md px-2 py-1.5 text-slate-700">Backlink Checker</a>
+                </div>
+
+                <div class="grid grid-cols-2 gap-2 pt-2">
+                    <a href="#" class="rounded-full border border-[#1e40af] px-4 py-2 text-center text-sm font-semibold text-[#1e40af]">Book
+            a Meeting</a>
+                    <a href="#" class="rounded-full bg-[#eab308] px-4 py-2 text-center text-sm font-semibold text-white">Get a
+            Proposal</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="bg-neutral-50">
+        <!-- Extra top padding clears fixed header + breathing room; scales up on larger screens -->
+        <section class="service-detail-hero relative overflow-hidden bg-gradient-to-br from-black via-neutral-950 to-zinc-900 pb-12 pt-[calc(7rem+env(safe-area-inset-top))] sm:pb-16 sm:pt-[calc(8rem+env(safe-area-inset-top))] md:pb-20 md:pt-[calc(9rem+env(safe-area-inset-top))] lg:pb-24 lg:pt-[calc(10rem+env(safe-area-inset-top))]">
+            <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(234,179,8,0.14),transparent_55%)]"></div>
+            <svg class="pointer-events-none absolute right-0 top-0 h-[min(55vw,420px)] w-[min(70vw,560px)] text-[#eab308]/20" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+                <path d="M420 0c-80 120-200 200-360 220" stroke="currentColor" stroke-width="2" />
+            </svg>
+            <div class="relative z-10 mx-auto flex max-w-[1536px] flex-col gap-10 px-4 sm:gap-12 sm:px-5 md:px-6 lg:flex-row lg:items-center lg:gap-14 lg:px-8 xl:gap-16">
+                <div class="max-w-2xl flex-1 text-white">
+                    <h1 id="serviceDetailTitle" class="text-[clamp(1.65rem,5.5vw,3.75rem)] font-extrabold leading-[1.12] tracking-tight">Service</h1>
+                    <p id="serviceDetailDesc" class="mt-5 text-[15px] leading-relaxed text-white/85 sm:mt-6 sm:text-base md:text-lg">Loading?</p>
+                    <div class="mt-8 flex w-full max-w-xl flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
+                        <a href="mailto:info@randerc3.com" class="inline-flex min-h-[48px] w-full flex-1 items-center justify-center gap-3 rounded-full bg-[#eab308] px-5 py-3.5 text-sm font-bold text-black shadow-[0_12px_40px_rgba(234,179,8,0.25)] transition hover:bg-[#ca8a04] sm:min-h-0 sm:w-auto sm:flex-initial sm:px-7">
+                            <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black text-[#eab308]">
+                                <svg class="block h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+                            </span>
+                            <span class="text-center">Get a free quote</span>
+                        </a>
+                        <a href="tel:+32347666546" class="inline-flex min-h-[48px] w-full flex-1 items-center justify-center gap-3 rounded-full border-2 border-[#eab308] bg-transparent px-5 py-3.5 text-sm font-bold text-[#eab308] transition hover:bg-[#eab308]/10 sm:min-h-0 sm:w-auto sm:flex-initial sm:px-7">
+                            <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#eab308]/15 text-[#eab308] ring-1 ring-[#eab308]/40">
+                                <svg class="block h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7v8"/></svg>
+                            </span>
+                            <span class="text-center">Let's Discuss Your Project</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="relative flex w-full flex-1 flex-wrap items-center justify-center gap-4 sm:gap-5 lg:max-w-[min(100%,520px)] lg:justify-end" id="serviceBadges" aria-label="Highlights"></div>
+            </div>
+        </section>
+
+        <nav class="border-b border-[#eab308]/25 bg-black py-3.5 md:py-4" aria-label="Breadcrumb">
+            <div class="mx-auto flex max-w-[1536px] flex-wrap items-center gap-x-2 gap-y-1 px-4 text-[13px] text-yellow-100/90 sm:text-sm md:px-6 lg:px-8">
+                <a href="index.html" class="font-semibold text-[#eab308] transition hover:text-yellow-300 hover:underline">Home</a>
+                <span class="text-yellow-600/80" aria-hidden="true">&gt;</span>
+                <span id="serviceBreadcrumbCategory" class="font-medium text-white">Services</span>
+            </div>
+        </nav>
+
+        <section class="mx-auto max-w-[1536px] px-4 py-12 sm:px-5 sm:py-14 md:px-6 md:py-16 lg:px-8 lg:py-20">
+            <h2 class="text-xl font-extrabold text-black sm:text-2xl md:text-3xl">Why choose this service</h2>
+            <p id="serviceOverviewText" class="mt-4 max-w-3xl text-[15px] leading-relaxed text-neutral-600 sm:mt-5 sm:text-base md:text-lg">Loading?</p>
+            <ul class="mt-8 grid gap-3 text-neutral-800 sm:mt-10 sm:grid-cols-2 sm:gap-4">
+                <li class="flex gap-3 rounded-2xl border border-black/10 bg-white p-4 shadow-sm sm:p-5">
+                    <span class="mt-0.5 shrink-0 font-bold text-[#ca8a04]">&#10003;</span>
+                    <span class="text-[15px] leading-snug sm:text-base">Strategy-led delivery with clear milestones and measurable KPIs.</span>
+                </li>
+                <li class="flex gap-3 rounded-2xl border border-black/10 bg-white p-4 shadow-sm sm:p-5">
+                    <span class="mt-0.5 shrink-0 font-bold text-[#ca8a04]">&#10003;</span>
+                    <span class="text-[15px] leading-snug sm:text-base">Transparent reporting and collaborative workflows with your team.</span>
+                </li>
+                <li class="flex gap-3 rounded-2xl border border-black/10 bg-white p-4 shadow-sm sm:p-5">
+                    <span class="mt-0.5 shrink-0 font-bold text-[#ca8a04]">&#10003;</span>
+                    <span class="text-[15px] leading-snug sm:text-base">Technical excellence paired with conversion-focused creative execution.</span>
+                </li>
+                <li class="flex gap-3 rounded-2xl border border-black/10 bg-white p-4 shadow-sm sm:p-5">
+                    <span class="mt-0.5 shrink-0 font-bold text-[#ca8a04]">&#10003;</span>
+                    <span class="text-[15px] leading-snug sm:text-base">Dedicated specialists aligned to your industry and growth goals.</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- ===== FEATURED AWARDS SECTION ===== -->
+        <section class="bg-white py-20 md:py-24">
+            <div class="w-full max-w-[1536px] mx-auto ">
+                <div class="text-center mb-16 px-4">
+                    <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+                        Featured Awards <span class="text-yellow-500">& Recognitions</span>
+                    </h2>
+                </div>
+
+                <div class="awards-slider-container relative overflow-hidden awards-fade-edge">
+                    <div id="awardsSliderTrack" class="awards-slider-track gap-6 md:gap-10 py-10 md:py-16 px-4">
+                        <div class="awards-card w-[280px] md:w-[350px] rounded-3xl p-8 md:p-12 flex-shrink-0 flex flex-col justify-between relative group">
+                            <div class="absolute -top-3 -right-3 bg-yellow-400 text-black text-[10px] md:text-xs font-black px-4 py-1.5 rounded-full shadow-md z-10 border-2 border-white">
+                                2023</div>
+                            <div>
+                                <div class="awards-logo-box h-10 md:h-10 flex items-center mb-6">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+                                </div>
+                                <h3 class="text-xl md:text-2xl font-black text-black leading-tight">Premier Partner Status</h3>
+                            </div>
+                            <p class="text-slate-500 text-[10px] md:text-xs mt-3 font-bold uppercase tracking-[0.2em] group-hover:text-yellow-600 transition-colors">
+                                Ads Excellence</p>
+                        </div>
+
+                        <div class="awards-card w-[280px] md:w-[350px] rounded-3xl p-8 md:p-12 flex-shrink-0 flex flex-col justify-between relative group">
+                            <div class="absolute -top-3 -right-3 bg-yellow-400 text-black text-[10px] md:text-xs font-black px-4 py-1.5 rounded-full shadow-md z-10 border-2 border-white">
+                                2024</div>
+                            <div>
+                                <div class="awards-logo-box h-10 md:h-10 flex items-center mb-6">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Clutch">
+                                </div>
+                                <h3 class="text-xl md:text-2xl font-black text-black leading-tight">Top Rated SEO Agency</h3>
+                            </div>
+                            <p class="text-slate-500 text-[10px] md:text-xs mt-3 font-bold uppercase tracking-[0.2em] group-hover:text-yellow-600 transition-colors">
+                                Verified Growth</p>
+                        </div>
+
+                        <div class="awards-card w-[280px] md:w-[350px] rounded-3xl p-8 md:p-12 flex-shrink-0 flex flex-col justify-between relative group">
+                            <div class="absolute -top-3 -right-3 bg-yellow-400 text-black text-[10px] md:text-xs font-black px-4 py-1.5 rounded-full shadow-md z-10 border-2 border-white">
+                                2022</div>
+                            <div>
+                                <div class="awards-logo-box h-10 md:h-10 flex items-center mb-6">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="GoodFirms">
+                                </div>
+                                <h3 class="text-xl md:text-2xl font-black text-black leading-tight">Leading Tech Firm</h3>
+                            </div>
+                            <p class="text-slate-500 text-[10px] md:text-xs mt-3 font-bold uppercase tracking-[0.2em] group-hover:text-yellow-600 transition-colors">
+                                Market Innovator</p>
+                        </div>
+
+                        <div class="awards-card w-[280px] md:w-[350px] rounded-3xl p-8 md:p-12 flex-shrink-0 flex flex-col justify-between relative group">
+                            <div class="absolute -top-3 -right-3 bg-yellow-400 text-black text-[10px] md:text-xs font-black px-4 py-1.5 rounded-full shadow-md z-10 border-2 border-white">
+                                2021</div>
+                            <div>
+                                <div class="awards-logo-box h-10 md:h-10 flex items-center mb-6">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Trustpilot">
+                                </div>
+                                <h3 class="text-xl md:text-2xl font-black text-black leading-tight">5-Star Customer Trust</h3>
+                            </div>
+                            <p class="text-slate-500 text-[10px] md:text-xs mt-3 font-bold uppercase tracking-[0.2em] group-hover:text-yellow-600 transition-colors">
+                                Service Quality</p>
+                        </div>
+
+                        <div class="awards-card w-[280px] md:w-[350px] rounded-3xl p-8 md:p-12 flex-shrink-0 flex flex-col justify-between relative group">
+                            <div class="absolute -top-3 -right-3 bg-yellow-400 text-black text-[10px] md:text-xs font-black px-4 py-1.5 rounded-full shadow-md z-10 border-2 border-white">
+                                WINNER</div>
+                            <div>
+                                <div class="awards-logo-box h-10 md:h-10 flex items-center mb-6">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="G2">
+                                </div>
+                                <h3 class="text-xl md:text-2xl font-black text-black leading-tight">High Performer Badge</h3>
+                            </div>
+                            <p class="text-slate-500 text-[10px] md:text-xs mt-3 font-bold uppercase tracking-[0.2em] group-hover:text-yellow-600 transition-colors">
+                                Ads Leader</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SERVICE OVERVIEW BENTO ===== -->
+        <section class="bento-overview relative overflow-hidden bg-gradient-to-br from-yellow-50 via-white to-yellow-100 text-slate-700 py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8">
+            <div class="pointer-events-none absolute -top-32 -right-24 h-[420px] w-[420px] rounded-full bg-[#eab308]/15 blur-3xl"></div>
+            <div class="pointer-events-none absolute -bottom-32 -left-24 h-[360px] w-[360px] rounded-full bg-amber-200/40 blur-3xl"></div>
+            <div class="relative mx-auto max-w-[1536px]">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+
+                    <div class="lg:col-span-7 space-y-6 md:space-y-8 sem-blog-fade-in-up" style="animation-delay: 0.1s;">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#eab308]/15 border border-[#eab308]/40 text-[#a16207] text-[11px] font-bold uppercase tracking-widest">
+                            <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#eab308] opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-[#eab308]"></span>
+                            </span>
+                            Premium Agency
+                        </div>
+
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-[1.12] tracking-tight">
+                            Simple, Affordable <br class="hidden sm:block">
+                            <span class="text-[#eab308]">Web Design.</span>
+                        </h2>
+
+                        <div class="space-y-5 max-w-2xl text-base md:text-lg text-slate-600 leading-relaxed">
+                            <p>
+                                In order to define the procedure of Web Design, it would be valuable to characterize the roots of web design, and how it can profit the client. Our service helps design a website that is superior and enhances the prospect of its grading remarkably in
+                                search engines.
+                            </p>
+                            <p class="text-sm md:text-base italic border-l-2 border-[#eab308] pl-5 py-1 text-slate-500">
+                                We customize our results around the particular requirements of the customer across industries including E-commerce, Medical, and Real Estate.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
+                            <a href="#" class="ui-raw-btn inline-flex items-center justify-center gap-2 rounded-full bg-[#eab308] hover:bg-[#ca8a04] text-black font-bold text-sm md:text-base px-7 py-3.5 transition-all shadow-lg shadow-[#eab308]/30 active:scale-95 min-h-[48px]">
+                Get a free quote
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+                            <a href="#" class="ui-raw-btn inline-flex items-center justify-center gap-2 rounded-full border-2 border-[#eab308] text-[#a16207] hover:bg-[#eab308]/10 hover:text-[#92400e] font-bold text-sm md:text-base px-7 py-3.5 transition-all active:scale-95 min-h-[48px]">
+                Our Portfolio
+              </a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5 grid grid-cols-2 gap-3 sm:gap-4 sem-blog-fade-in-up" style="animation-delay: 0.25s;">
+
+                        <div class="bento-yellow-card p-5 sm:p-7 h-44 sm:h-52 flex flex-col justify-between rounded-2xl">
+                            <div class="w-11 h-11 sm:w-12 sm:h-12 bg-[#eab308]/15 flex items-center justify-center rounded-lg text-[#a16207]">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 2 2 8l10 6 10-6-10-6Z"/>
+                  <path d="M2 16l10 6 10-6"/>
+                  <path d="M2 12l10 6 10-6"/>
+                </svg>
+                            </div>
+                            <div>
+                                <span class="text-3xl sm:text-4xl font-black text-slate-900">50+</span>
+                                <p class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mt-1">Industries Served</p>
+                            </div>
+                        </div>
+
+                        <div class="bento-yellow-card p-5 sm:p-7 h-44 sm:h-52 flex flex-col justify-between rounded-2xl">
+                            <div class="w-11 h-11 sm:w-12 sm:h-12 bg-[#eab308]/15 flex items-center justify-center rounded-lg text-[#a16207]">
+                                <svg class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M3 17l6-6 4 4 8-8"/>
+                  <path d="M21 7v7h-7"/>
+                </svg>
+                            </div>
+                            <div>
+                                <span class="text-3xl sm:text-4xl font-black text-slate-900">3X</span>
+                                <p class="text-[10px] font-bold uppercase tracking-widest text-slate-500 mt-1">Average ROI</p>
+                            </div>
+                        </div>
+
+                        <div id="hubCard" class="bento-yellow-card col-span-2 p-5 sm:p-7 min-h-[140px] sm:min-h-[160px] relative overflow-hidden cursor-pointer group rounded-2xl">
+                            <div class="flex items-center gap-4 sm:gap-6 transition-all duration-500">
+                                <div class="w-14 h-14 sm:w-16 sm:h-16 bg-[#eab308]/15 flex items-center justify-center rounded-xl text-[#a16207] shrink-0">
+                                    <svg class="w-6 h-6 sm:w-8 sm:h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="9" r="6"/>
+                    <path d="M8.5 13.5 6 22l6-3 6 3-2.5-8.5"/>
+                  </svg>
+                                </div>
+                                <div class="min-w-0">
+                                    <h3 class="text-lg sm:text-xl font-bold text-slate-900 uppercase tracking-tight">HubSpot Certified</h3>
+                                    <p class="text-[11px] sm:text-xs text-[#a16207] font-bold mt-1 uppercase tracking-wider inline-flex items-center gap-1 group-hover:pl-2 transition-all">
+                                        Hover for details
+                                        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div id="hubReveal" class="absolute inset-0 bg-gradient-to-br from-yellow-50 to-yellow-100 p-5 sm:p-7 flex items-center translate-y-full transition-transform duration-500 ease-in-out">
+                                <p class="text-slate-700 text-sm font-medium leading-snug border-l-4 border-[#eab308] pl-4">
+                                    Expert CRM implementation and lead generation strategies tailored to scale your specific business vertical.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="bento-yellow-card col-span-2 p-4 sm:p-5 flex items-center justify-between rounded-2xl">
+                            <div class="flex -space-x-3">
+                                <div class="w-8 h-8 rounded-full bg-yellow-200 border-2 border-white"></div>
+                                <div class="w-8 h-8 rounded-full bg-yellow-300 border-2 border-white"></div>
+                                <div class="w-8 h-8 rounded-full bg-[#eab308] border-2 border-white"></div>
+                            </div>
+                            <p class="text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-slate-700">Join 1k+ Happy Clients</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== NEWSLETTER + SERVICE COPY ===== -->
+        <section class="bg-white px-4 py-16 sm:px-6 sm:py-20 md:py-24 lg:px-8">
+            <div class="mx-auto max-w-[1536px] space-y-12 md:space-y-14">
+
+                <!-- Service intro copy block (full width) -->
+                <div class="w-full space-y-4 text-sm leading-relaxed text-slate-600 sm:text-base md:leading-[1.75] lg:columns-2 lg:gap-12 lg:space-y-0 lg:text-[17px] xl:gap-16">
+                    <p class="lg:mb-5 lg:break-inside-avoid">Our services are very effective in a manner to get your website noticed by prospective customers. Our design philosophy focuses on both the way search engines work and the way human visitors think, balancing technical precision with
+                        intuitive, brand-aligned experiences that drive engagement.</p>
+                    <p class="lg:mb-5 lg:break-inside-avoid">There are many reasons to choose us and rely on us. To start with, our web-designing services focus exclusively on the needs of the client &mdash; this begins with understanding your business, audience, and competitive landscape, then
+                        aligning every deliverable to measurable outcomes you can track from day one.</p>
+                    <p class="lg:mb-5 lg:break-inside-avoid">Every engagement opens with a strategic discovery sprint where we map your goals, audit existing assets, and benchmark against the leaders in your category. The insights we surface here inform every design decision that follows, so
+                        the website we ship doesn&rsquo;t just look great &mdash; it actively converts visitors into customers and supports long-term growth.</p>
+                    <p class="lg:mb-5 lg:break-inside-avoid">We blend conversion-rate optimisation, technical SEO, and accessibility best practices into the core of every build. From semantic HTML and structured data to image optimisation, Core Web Vitals tuning, and WCAG-aligned colour and
+                        contrast, our team ensures your site loads quickly, ranks well, and provides a seamless experience on any device or connection speed.</p>
+                    <p class="lg:mb-5 lg:break-inside-avoid">Our process is collaborative, transparent, and milestone-driven. You&rsquo;ll receive regular updates, working previews, and direct access to designers and developers throughout the engagement. Post-launch we provide ongoing support,
+                        performance monitoring, and iteration roadmaps so your investment continues to compound month after month.</p>
+                </div>
+
+                <!-- Newsletter card -->
+                <div class="newsletter-mesh-yellow relative overflow-hidden rounded-[1.75rem] p-6 shadow-[0_30px_80px_-30px_rgba(234,179,8,0.4)] sm:rounded-[2rem] sm:p-10 md:rounded-[2.5rem] md:p-12 lg:p-14">
+
+                    <!-- Decorative blobs -->
+                    <div class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-yellow-200/45"></div>
+                    <div class="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-yellow-300/35"></div>
+
+                    <div class="relative z-10 flex flex-col items-center gap-8 sm:gap-10 lg:flex-row lg:gap-12">
+
+                        <!-- Profile -->
+                        <div class="shrink-0">
+                            <div class="newsletter-profile-ring flex h-36 w-36 items-center justify-center overflow-hidden rounded-full border-4 border-white bg-yellow-100 sm:h-44 sm:w-44 md:h-52 md:w-52">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400" alt="Support specialist" class="h-full w-full object-cover" loading="lazy" decoding="async">
+                            </div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="flex-1 space-y-5 text-center sm:space-y-6 lg:text-left">
+
+                            <div class="space-y-2 sm:space-y-3">
+                                <h2 class="text-2xl font-extrabold leading-[1.15] tracking-tight text-black sm:text-3xl md:text-4xl lg:text-5xl">
+                                    Don&rsquo;t Miss Updates From Us!
+                                </h2>
+                                <p class="mx-auto max-w-xl text-sm leading-relaxed text-black/75 sm:text-base lg:mx-0">
+                                    Sign up now for our newsletter to receive a list of newly added high DA sites and limited-time offers every week.
+                                </p>
+                            </div>
+
+                            <form id="newsletterForm" class="flex flex-col gap-3 sm:flex-row" novalidate>
+                                <label for="newsletterEmail" class="sr-only">Email address</label>
+                                <div class="relative flex-1">
+                                    <span class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-4 text-black/55">
+                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                            <rect x="3" y="5" width="18" height="14" rx="2"/>
+                                            <path d="m3 7 9 6 9-6"/>
+                                        </svg>
+                                    </span>
+                                    <input id="newsletterEmail" name="email" type="email" required autocomplete="email" placeholder="E-mail address" class="newsletter-input w-full rounded-xl border border-yellow-600/25 bg-white/85 py-3.5 pl-11 pr-4 text-sm text-black outline-none placeholder:text-black/45 sm:py-4 sm:text-base">
+                                </div>
+                                <button type="submit" class="ui-raw-btn inline-flex items-center justify-center gap-2 rounded-xl bg-black px-7 py-3.5 text-sm font-bold uppercase tracking-widest text-[#eab308] shadow-lg transition-all hover:bg-neutral-900 active:scale-95 sm:py-4">
+                                    <span data-newsletter-label>Subscribe Now</span>
+                                </button>
+                            </form>
+
+                            <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-semibold text-black/75 lg:justify-start">
+                                <span class="inline-flex items-center gap-1.5">
+                                    <svg class="h-3.5 w-3.5 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                        <path d="M22 4 12 14.01l-3-3"/>
+                                    </svg>
+                                    No Spam
+                                </span>
+                                <span class="inline-flex items-center gap-1.5">
+                                    <svg class="h-3.5 w-3.5 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                        <path d="M22 4 12 14.01l-3-3"/>
+                                    </svg>
+                                    Unsubscribe anytime
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER SECTION ===== -->
+    <footer class="border-t border-yellow-900 bg-[#000000]">
+        <div class="mx-auto max-w-[1536px] px-4 pt-14 pb-8 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 gap-10 lg:grid-cols-12">
+                <div class="space-y-5 lg:col-span-4">
+                    <a href="index.html" class="inline-flex items-center gap-2">
+                        <span class="text-3xl font-extrabold leading-none tracking-tight">
+              <span class="text-white">Service</span><span class="text-[#eab308]">stack</span>
+                        </span>
+                    </a>
+                    <p class="max-w-md text-[14px] leading-7 text-yellow-100/80">
+                        Are you looking for professional advice for your new business? Are you looking for professional advice for your new business? Are you looking for professional advice for your new business.
+                    </p>
+
+                    <form class="flex max-w-md overflow-hidden rounded-xl border border-slate-500/60">
+                        <input type="email" placeholder="Type Email" class="w-full bg-slate-950/40 px-4 py-2.5 text-sm text-yellow-50 placeholder:text-yellow-200/70 outline-none">
+                        <button type="button" class="bg-[#eab308] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#ca8a04]">Subscribe</button>
+                    </form>
+                </div>
+
+                <div class="lg:col-span-4">
+                    <h3 class="mb-5 text-lg font-semibold text-white">Services Link</h3>
+                    <div id="footerServicesGrid" class="grid grid-cols-2 gap-x-6 gap-y-3 text-[14px] text-yellow-100/85 sm:gap-x-12 sm:gap-y-4 sm:text-[15px]">
+                        <a href="#" class="group inline-flex items-center gap-2 hover:text-[#eab308]"><span
+                class="text-yellow-300 group-hover:text-[#eab308]">&rsaquo;</span>Business</a>
+                        <a href="#" class="group inline-flex items-center gap-2 hover:text-[#eab308]"><span
+                class="text-yellow-300 group-hover:text-[#eab308]">&rsaquo;</span>Search engine</a>
+                        <a href="#" class="group inline-flex items-center gap-2 hover:text-[#eab308]"><span
+                class="text-yellow-300 group-hover:text-[#eab308]">&rsaquo;</span>Agency</a>
+                        <a href="#" class="group inline-flex items-center gap-2 hover:text-[#eab308]"><span
+                class="text-yellow-300 group-hover:text-[#eab308]">&rsaquo;</span>Online support</a>
+                        <a href="#" class="group inline-flex items-center gap-2 hover:text-[#eab308]"><span
+                class="text-yellow-300 group-hover:text-[#eab308]">&rsaquo;</span>Social media</a>
+                        <a href="#" class="group inline-flex items-center gap-2 hover:text-[#eab308]"><span
+                class="text-yellow-300 group-hover:text-[#eab308]">&rsaquo;</span>Development</a>
+                        <a href="#" class="group inline-flex items-center gap-2 hover:text-[#eab308]"><span
+                class="text-yellow-300 group-hover:text-[#eab308]">&rsaquo;</span>Branding</a>
+                        <a href="#" class="group inline-flex items-center gap-2 hover:text-[#eab308]"><span
+                class="text-yellow-300 group-hover:text-[#eab308]">&rsaquo;</span>Pay per click</a>
+                        <a href="#" class="group inline-flex items-center gap-2 hover:text-[#eab308]"><span
+                class="text-yellow-300 group-hover:text-[#eab308]">&rsaquo;</span>Design</a>
+                        <a href="#" class="group inline-flex items-center gap-2 hover:text-[#eab308]"><span
+                class="text-yellow-300 group-hover:text-[#eab308]">&rsaquo;</span>Event activation</a>
+                        <a href="#" class="group inline-flex items-center gap-2 hover:text-[#eab308]"><span
+                class="text-yellow-300 group-hover:text-[#eab308]">&rsaquo;</span>Data science</a>
+                        <a href="#" class="group inline-flex items-center gap-2 hover:text-[#eab308]"><span
+                class="text-yellow-300 group-hover:text-[#eab308]">&rsaquo;</span>Automation</a>
+                    </div>
+                </div>
+
+                <div class="space-y-4 lg:col-span-4">
+                    <h3 class="text-lg font-semibold text-white">Information</h3>
+                    <p class="text-[15px] text-yellow-100/85">
+                        <span class="font-semibold text-[#eab308]">Location :</span> House: 65/4, Zanson street 375, London, UK
+                    </p>
+                    <p class="text-[15px] text-yellow-100/85">
+                        <span class="font-semibold text-[#eab308]">Tel :</span> +0880-564-5644
+                    </p>
+                    <p class="text-[15px] text-yellow-100/85">
+                        <span class="font-semibold text-[#eab308]">Email :</span> info@randerc3.com
+                    </p>
+
+                    <div class="flex flex-wrap gap-3 pt-1">
+                        <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="grid h-10 w-10 place-items-center rounded-md bg-[#eab308] text-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:bg-[#ca8a04] hover:shadow-[0_10px_20px_-8px_rgba(59,130,246,0.8)]" aria-label="Visit our Facebook page">
+                            <span class="text-sm font-bold">f</span>
+                        </a>
+                        <a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="grid h-10 w-10 place-items-center rounded-md bg-[#eab308] text-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:bg-[#ca8a04] hover:shadow-[0_10px_20px_-8px_rgba(59,130,246,0.8)]" aria-label="Visit our X (Twitter) profile">
+                            <span class="text-sm font-bold">x</span>
+                        </a>
+                        <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="grid h-10 w-10 place-items-center rounded-md bg-[#eab308] text-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:bg-[#ca8a04] hover:shadow-[0_10px_20px_-8px_rgba(59,130,246,0.8)]" aria-label="Visit our LinkedIn page">
+                            <span class="text-sm font-bold">in</span>
+                        </a>
+                        <a href="https://www.pinterest.com/" target="_blank" rel="noopener noreferrer" class="grid h-10 w-10 place-items-center rounded-md bg-[#eab308] text-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:bg-[#ca8a04] hover:shadow-[0_10px_20px_-8px_rgba(59,130,246,0.8)]" aria-label="Visit our Pinterest profile">
+                            <span class="text-sm font-bold">p</span>
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="grid h-10 w-10 place-items-center rounded-md bg-[#eab308] text-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:bg-[#ca8a04] hover:shadow-[0_10px_20px_-8px_rgba(59,130,246,0.8)]" aria-label="Visit our Instagram profile">
+                            <span class="text-sm font-bold">ig</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 border-t border-slate-400/30 pt-6">
+                <div class="footer-badge-slider-container">
+                    <div class="footer-badge-slider-track" id="footerBadgeTrack">
+                        <div class="footer-badge-item">
+                            <img src="https://dummyimage.com/210x56/0f172a/ffffff.png&text=Inc+5000+%7C+9+Years" alt="Inc 5000 badge" loading="lazy">
+                        </div>
+                        <div class="footer-badge-item">
+                            <img src="https://dummyimage.com/210x56/0f172a/ffffff.png&text=Google+Partner" alt="Google Partner badge" loading="lazy">
+                        </div>
+                        <div class="footer-badge-item">
+                            <img src="https://dummyimage.com/260x56/0f172a/ffffff.png&text=Microsoft+Select+Partner" alt="Microsoft Select Partner badge" loading="lazy">
+                        </div>
+                        <div class="footer-badge-item">
+                            <img src="https://dummyimage.com/210x56/0f172a/ffffff.png&text=BBB+A%2B+Rating" alt="BBB A plus rating badge" loading="lazy">
+                        </div>
+                        <div class="footer-badge-item">
+                            <img src="https://dummyimage.com/230x56/0f172a/ffffff.png&text=Meta+Business+Partner" alt="Meta Business Partner badge" loading="lazy">
+                        </div>
+                        <div class="footer-badge-item">
+                            <img src="https://dummyimage.com/250x56/0f172a/ffffff.png&text=Amazon+Ads+Verified+Partner" alt="Amazon Ads verified partner badge" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-10 flex flex-col items-start justify-between gap-4 border-t border-slate-400/70 pt-5 text-[14px] text-yellow-100/80 sm:flex-row sm:items-center">
+                <p>Copyright &copy; <span id="footerYear"></span> <a href="#" class="font-medium hover:underline"><span
+              class="text-white">Service</span><span class="text-[#eab308]">stack</span></a> All Rights Reserved</p>
+                <button id="backToTop" class="back-to-top-btn rounded-lg bg-[#eab308] p-3 text-white transition-all duration-300 hover:-translate-y-1 hover:scale-110 hover:bg-[#eab308] hover:shadow-[0_14px_28px_-12px_rgba(59,130,246,0.9)]" aria-label="Back to top">
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="m6 15 6-6 6 6"></path>
+          </svg>
+        </button>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
