@@ -1,119 +1,89 @@
+ 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infinite Platform Slider | Left Scroll</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #ffffff; }
-
-        /* Slider Wrapper */
-        .slider-container {
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Custom Corner Ribbon */
+        .ribbon-wrapper {
+            width: 150px;
+            height: 150px;
             overflow: hidden;
-            padding: 40px 0;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+        }
+        .ribbon-content {
+            font-weight: 900;
+            text-align: center;
+            transform: rotate(45deg);
             position: relative;
-            white-space: nowrap;
-        }
-
-        /* The moving track - Direction changed to Left */
-        .slider-track {
-            display: flex;
-            width: max-content;
-            /* Changed animation to scroll-left */
-            animation: scroll-left 40s linear infinite;
-        }
-
-        /* Infinite Animation: Right to Left */
-        @keyframes scroll-left {
-            0% { transform: translateX(0); } 
-            100% { transform: translateX(-50%); } /* Move half-way through the duplicated content */
-        }
-
-        /* Stop on hover */
-        .slider-container:hover .slider-track {
-            animation-play-state: paused;
-        }
-
-        /* Card Styling */
-        .platform-card {
-            width: 280px;
-            height: 280px;
-            margin: 0 15px;
-            border: 1px solid #e2e8f0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            background: white;
-            border-radius: 8px;
-        }
-
-        .platform-card:hover {
-            border-color: #2563eb;
-            box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.1);
-            transform: translateY(-5px);
-        }
-
-        .icon-circle {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
+            padding: 10px 0;
+            left: -5px;
+            top: 40px;
+            width: 220px;
+            background-color: #facc15; /* Theme Yellow */
+            color: #000; /* Theme Black */
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-100 p-10">
 
-    <div class="slider-container">
-        <div class="slider-track" id="track">
-            <div class="platform-card">
-                <div class="icon-circle bg-yellow-700">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png" class="w-16 invert" alt="Financial">
-                </div>
-                <h3 class="text-lg font-bold text-slate-800">Financial Services</h3>
-            </div>
-
-            <div class="platform-card">
-                <div class="icon-circle bg-[#004a99]">
-                    <img src="https://cdn-icons-png.flaticon.com/512/8066/8066270.png" class="w-16 invert" alt="Tech">
-                </div>
-                <h3 class="text-lg font-bold text-slate-800">Tech & Education</h3>
-            </div>
-
-            <div class="platform-card">
-                <div class="icon-circle bg-[#26c1c1]">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1998/1998087.png" class="w-16 invert" alt="Creative">
-                </div>
-                <h3 class="text-lg font-bold text-slate-800">Creative & Media</h3>
-            </div>
-
-            <div class="platform-card">
-                <div class="icon-circle bg-[#0066ff]">
-                    <img src="https://cdn-icons-png.flaticon.com/512/427/427735.png" class="w-16 invert" alt="Solar">
-                </div>
-                <h3 class="text-lg font-bold text-slate-800">Solar & Energy</h3>
-            </div>
-
-            <div class="platform-card">
-                <div class="icon-circle bg-orange-500">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3081/3081986.png" class="w-16 invert" alt="Retail">
-                </div>
-                <h3 class="text-lg font-bold text-slate-800">E-Commerce</h3>
-            </div>
+    <div class="max-w-6xl mx-auto bg-white rounded-[2.5rem] shadow-2xl border border-slate-50 p-8 md:p-16 relative overflow-hidden">
+        
+        <div class="ribbon-wrapper">
+            <div class="ribbon-content">SEO Expert</div>
         </div>
+
+        <div class="relative z-10">
+            <h2 class="text-4xl md:text-6xl font-black text-black mb-4 tracking-tighter flex flex-wrap items-center gap-4">
+                Get Your Free Audit 
+                <span class="inline-block">
+                    <svg class="w-12 h-12 md:w-16 md:h-16 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                </span>
+                <span class="text-yellow-500">Report!</span>
+            </h2>
+            
+            <p class="text-slate-500 text-lg md:text-xl font-medium mb-12">
+                Uncover opportunities to grow your business.
+            </p>
+
+            <form class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-10">
+                <input type="text" placeholder="yourwebsite.com" 
+                       class="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-sm focus:outline-none focus:border-yellow-400 focus:ring-4 focus:ring-yellow-400/10 transition-all">
+                
+                <input type="text" placeholder="Your Name" 
+                       class="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-sm focus:outline-none focus:border-yellow-400 focus:ring-4 focus:ring-yellow-400/10 transition-all">
+                
+                <input type="text" placeholder="+91 1234567890" 
+                       class="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-sm focus:outline-none focus:border-yellow-400 focus:ring-4 focus:ring-yellow-400/10 transition-all">
+                
+                <input type="email" placeholder="youremail@xyz.com" 
+                       class="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-sm focus:outline-none focus:border-yellow-400 focus:ring-4 focus:ring-yellow-400/10 transition-all">
+            </form>
+
+            <button class="bg-black hover:bg-slate-900 text-white font-black py-5 px-10 rounded-2xl transition-all shadow-xl hover:shadow-yellow-400/20 group flex items-center gap-3 active:scale-95">
+                <span>Get My Free Report Now!</span>
+                <svg class="w-5 h-5 text-yellow-400 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                    <path d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                </svg>
+            </button>
+        </div>
+
+        <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-yellow-400/10 rounded-full blur-3xl"></div>
     </div>
 
-    <script>
-        // Clone the content once to ensure a seamless "infinite" loop when scrolling left
-        const track = document.getElementById('track');
-        const content = track.innerHTML;
-        track.innerHTML = content + content; 
-    </script>
 </body>
 </html>

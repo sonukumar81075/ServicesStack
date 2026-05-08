@@ -307,6 +307,16 @@ const observer = new IntersectionObserver((entries) => {
       const heroPlatformBaseCards = heroPlatformTrack.innerHTML;
       heroPlatformTrack.innerHTML = heroPlatformBaseCards + heroPlatformBaseCards + heroPlatformBaseCards;
     }
+    const awardsSliderTrack = document.getElementById("awardsSliderTrack");
+    if (awardsSliderTrack && !awardsSliderTrack.dataset.cloned) {
+      awardsSliderTrack.innerHTML += awardsSliderTrack.innerHTML;
+      awardsSliderTrack.dataset.cloned = "true";
+    }
+    const footerBadgeTrack = document.getElementById("footerBadgeTrack");
+    if (footerBadgeTrack && !footerBadgeTrack.dataset.cloned) {
+      footerBadgeTrack.innerHTML += footerBadgeTrack.innerHTML;
+      footerBadgeTrack.dataset.cloned = "true";
+    }
 
     const heroTypewriter = document.getElementById("heroTypewriter");
     if (heroTypewriter) {
@@ -364,6 +374,68 @@ const observer = new IntersectionObserver((entries) => {
         document.querySelector(".semfaq-item")?.classList.add("active");
       }, 300);
     });
+
+    (() => {
+      const semGoalData = [
+        {
+          title: "Build a strong online presence from scratch.",
+          items: ["Website Design & Development", "Technical SEO Setup", "Content Writing & Blogging", "SEO Strategy Planning"],
+        },
+        {
+          title: "Dominate search engines and attract visitors.",
+          items: ["Keyword Research", "On-Page Optimization", "Backlink Building", "Competitor Analysis"],
+        },
+        {
+          title: "Convert casual browsers into loyal customers.",
+          items: ["PPC Campaign Management", "Landing Page Audit", "Conversion Rate Optimization", "Lead Magnet Creation"],
+        },
+        {
+          title: "Scale your sales with precision marketing.",
+          items: ["Google Shopping Ads", "Remarketing Strategies", "E-commerce SEO", "ROI Tracking"],
+        },
+        {
+          title: "Capture the market in your neighborhood.",
+          items: ["Google Business Profile", "Local Citations", "Review Management", "Geo-targeted Ads"],
+        },
+      ];
+
+      const semGoalButtons = Array.from(document.querySelectorAll("[data-sem-goal-tab]"));
+      const semGoalTitle = document.getElementById("semGoalContentTitle");
+      const semGoalList = document.getElementById("semGoalContentList");
+      const semGoalContent = document.getElementById("semGoalTabContent");
+
+      if (!semGoalButtons.length || !semGoalTitle || !semGoalList || !semGoalContent) return;
+
+      const renderSemGoalList = (index) => {
+        semGoalList.innerHTML = semGoalData[index].items
+          .map(
+            (item, i) => `
+                <li class="flex items-center gap-4 text-slate-700 font-semibold group cursor-pointer opacity-0" 
+                    style="animation: sem-goal-fade-up 0.4s ease forwards ${0.2 + i * 0.1}s">
+                    <span class="text-yellow-500 font-bold">→</span> ${item}
+                </li>
+            `
+          )
+          .join("");
+      };
+
+      const switchSemGoalTab = (index) => {
+        semGoalButtons.forEach((btn, i) => btn.classList.toggle("sem-goal-tab-active", i === index));
+        semGoalContent.style.opacity = 0;
+
+        setTimeout(() => {
+          semGoalTitle.textContent = semGoalData[index].title;
+          renderSemGoalList(index);
+          semGoalContent.style.opacity = 1;
+        }, 200);
+      };
+
+      semGoalButtons.forEach((button, index) => {
+        button.addEventListener("click", () => switchSemGoalTab(index));
+      });
+
+      renderSemGoalList(0);
+    })();
 
     (() => {
       let currentSlide = 0;
