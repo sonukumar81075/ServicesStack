@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seamless Infinite Logo Slider</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'infinite-scroll': 'infinite-scroll 30s linear infinite',
+                    },
+                    keyframes: {
+                        'infinite-scroll': {
+                            from: { transform: 'translateX(0)' },
+                            to: { transform: 'translateX(-100%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .mask-inline-fade {
+                mask-image: linear-gradient(
+                    to right,
+                    transparent,
+                    black 10%,
+                    black 90%,
+                    transparent
+                );
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="bg-gray-50 flex items-center justify-center min-h-screen">
+        <div class="w-full py-12">
+            <!-- Main Wrapper with Mask -->
+            <div class="relative max-w-[1536px] mx-auto overflow-hidden mask-inline-fade">
+
+                <!-- Flex Container -->
+                <div class="flex w-max group">
+
+                    <!-- Primary Set -->
+                    <ul
+                        class="flex items-center justify-around gap-12 md:gap-20 px-10 animate-infinite-scroll group-hover:[animation-play-state:paused]">
+                        <li><img src="/assets/BrandImage/w3era-client-ambar-distributors.avif" alt="Logo"
+                                class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                        </li>
+                        <li><img src="/assets/BrandImage/w3era-client-chimney-boys.avif" alt="Logo"
+                                class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                        </li>
+                        <li><img src="/assets/BrandImage/w3era-client-chordia-jewels_Wpq1rhB.avif" alt="Logo"
+                                class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                        </li>
+                        <li><img src="/assets/BrandImage/w3era-client-cipla.avif" alt="Logo"
+                                class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                        </li>
+                        <li><img src="/assets/BrandImage/w3era-client-en.avif" alt="Logo"
+                                class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                        </li>
+                        <li><img src="/assets/BrandImage/w3era-client-fortis.avif" alt="Logo"
+                                class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                        </li>
+                        <li><img src="/assets/BrandImage/w3era-client-indiamart.avif" alt="Logo"
+                                class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                        </li>
+                        <li><img src="/assets/BrandImage/w3era-client-pickapic.avif" alt="Logo"
+                                class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                        </li>
+                    </ul>
+
+                    <!-- Duplicate Set (The "Anchor" for the loop) -->
+                    <ul class="flex items-center justify-around gap-12 md:gap-20 px-10 animate-infinite-scroll group-hover:[animation-play-state:paused]"
+                        aria-hidden="true">
+                        <li><img src="/assets/BrandImage/w3era-client-piramal.avif" alt="Logo"
+                                class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                        </li>
+                        <li><img src="/assets/BrandImage/w3era-client-piramal.avif" alt="Logo"
+                                class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                        </li>
+                        <li><img src="/assets/BrandImage/w3era-client-tigerlyfe-capital-solutions.avif" alt="Logo"
+                                class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                        </li>
+                        <li><img src="/assets/BrandImage/w3era-client-ambar-distributors.avif" alt="Logo"
+                                class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                        </li>
+                        <li><img src="/assets/BrandImage/w3era-client-chimney-boys.avif" alt="Logo"
+                                class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                        </li>
+                        <li><img src="/assets/BrandImage/w3era-client-cipla.avif" alt="Logo"
+                                class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                        </li>
+                        <li><img src="/assets/BrandImage/w3era-client-indiamart.avif" alt="Logo"
+                                class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                        </li>
+                        <li><img src="/assets/BrandImage/w3era-client-en.avif" alt="Logo"
+                                class="h-14 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
